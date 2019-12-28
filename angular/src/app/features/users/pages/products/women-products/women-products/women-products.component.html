@@ -1,0 +1,184 @@
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Women Products
+    </h2>
+</section>
+<!-- Product -->
+<div class="bg0 m-t-23 p-b-140">
+    <div class="container">
+        <div class="flex-w flex-sb-m p-b-52">
+            <!--<div id="nija" class="flex-w flex-l-m filter-tope-group m-tb-10">
+                <h5 class="pr">Categories: &nbsp;&nbsp;&nbsp;</h5><br>
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" >
+                    <a class="mile" routerLink="/products/all-products">All Products</a>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile" routerLink="/products/men-products"> Men</a>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile"  routerLink="/products/women-products">Women</a>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile"  routerLink="/products/kids-products">Kids</a>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile"  routerLink="/products/sports-products">Sports</a>
+                </button>
+
+            
+            </div>-->
+
+            <div id="nija" class="flex-w flex-c-m m-tb-10">
+                    <label class="pr" for="sort">&nbsp;&nbsp;&nbsp; Show: &nbsp;</label>
+                    <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+                        
+                        <select id="fri" class="form-control"  (change)="onChange($event.target.value)" [(ngModel)]="show">
+                          <option [value]="6">Show 6</option>
+                          <option [value]="9">Show 9</option>
+                          <option [value]="12">Show 12</option>
+                        
+    
+                        </select><br>
+                    </div><br><br>
+
+                   
+                  
+                   
+
+                <label class="pr" for="sort"> &nbsp;&nbsp;&nbsp; Sort By: &nbsp;</label>
+                <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+                  
+                        <select id="fri" class="form-control" (change)="sort($event.target.value)" name="sort">
+                    
+                                <option value="name-asc">Name A-Z </option>
+                                <option value="name-desc">Name Z-A</option>
+                                <option value="price-asc">Price Low To High</option>
+                                <option value="price-desc">Price High To Low</option>
+          
+                              </select>
+
+                    
+                </div>
+
+                
+            </div>
+
+            <!--<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+                <h5 class="pr">Brands: &nbsp;&nbsp;&nbsp;</h5><br>
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" >
+                        <a class="mile" routerLink="/products/nike"> Nike</a>
+                        <img class="brand" src="assets/images/nike.png"/>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile" routerLink="/products/adidas">Adidas</a>
+                        <img class="brand" src="assets/images/adidas.png"/>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile" routerLink="/products/puma">Puma</a>
+                        <img class="brand" src="assets/images/puma.png"/>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile" routerLink="/products/asics">Asics</a>
+                        <img class="brand" src="assets/images/asics.png"/>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile" routerLink="/products/reebok">Reebok</a>
+                        <img class="brand" src="assets/images/reebok.png"/>
+                </button>
+
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                        <a class="mile" routerLink="/products/new-balance">New Balance</a>
+                        <img class="brand" src="assets/images/nb.png"/>
+                    </button>
+
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
+                            <a class="mile" routerLink="/products/hummel">Hummel</a>
+                            <img class="brand" src="assets/images/hummel.png"/>
+                        </button>
+            
+            </div>-->
+            
+               
+           
+        </div>
+        <jw-pagination
+        class="paginacija"
+        [items]="products"
+        (changePage)="onChangePage($event)"
+        [pageSize]="show"></jw-pagination>
+        
+
+
+        
+        <ng-container *ngIf="products">
+        <div class="row isotope-grid">
+            <div id="adil" class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" *ngFor="let item of pageOfItems">
+                <!-- Block2 -->
+                <div class="block2">
+                    <div class="block2-pic hov-img0">
+                        
+                        <img [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + item.image_src)" alt="IMG-PRODUCT">
+
+                        <a routerLink="/products/product-details/{{ item.product_id }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                            Quick View
+                        </a>
+                    </div>
+
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1 flex-col-l ">
+                            <a routerLink="/products/product-details/{{ item.product_id }}" id="jojka" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                              {{item.name}}
+                            </a>
+
+                            <span class="stext-105 cl3">
+                              <b> ${{item.price}}</b><br>
+                              <img class="brand1" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + item.brand_image)" alt="IMG-PRODUCT">
+                               
+                            </span>
+
+
+                            <ng-container *ngIf="loggedIn">
+                                    
+                                <a (click)="onLike(item.product_id)" id="lajkan" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" title="Like">
+                                        
+                                    <img id="brand111" class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png" alt="ICON">
+                                    <img id="brand111" class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png" alt="ICON">
+                                   
+                                </a> <span id="brand112">{{item.likes}} </span>
+                           
+                            </ng-container>
+
+                        </div>
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+            
+
+           
+
+            
+        </div>
+
+        </ng-container>
+
+       
+    </div>
+</div>
+
+

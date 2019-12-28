@@ -1,0 +1,73 @@
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+         Cart Checkout
+    </h2>
+</section>
+
+
+<div class="table-responsive">
+        <table id="tabelac">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of data">
+              <td id="sopicka">
+                
+                  <div id="koljas159">
+                    <img class="brand7897" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + item.picture)" alt=""/>
+                    
+                </div>
+                <h5 class="pai4439">{{ item.name }}</h5> 
+                
+              </td>
+              <td>
+                <h5>${{ item.price }}</h5>
+              </td>
+              <td>
+                <h5>{{ item.quantity }}</h5>
+              </td>
+              <td>
+                <h5> {{ item.price * item.quantity | currency }}</h5>
+              </td>
+             
+            </tr>
+    
+            <tr>
+    
+                <td id="sopic" colspan="4">
+                 <h3 class="uia17">Thank You. Your order will be delivered!</h3>
+                 <h5 class="uia16">SubTotal:&nbsp; &nbsp; {{ fullPrice | currency}}</h5>
+                 
+                 
+                </td>
+    
+               
+                
+    
+            </tr>
+
+            <tr>
+              <td colspan="1" id="sopic">
+                <button id="polq" routerLink="/products/all-products" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                  Back To Shopping
+                </button><br>
+              </td>
+            </tr>
+            
+            
+          </tbody>
+    
+        
+        </table>
+    
+        
+       
+      </div>
+    

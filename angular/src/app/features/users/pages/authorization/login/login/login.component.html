@@ -1,0 +1,41 @@
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Login
+    </h2>
+</section>
+
+<section id="geljo" class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                       Please Sign In Now
+                    </h4>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" formControlName="email" name="email" placeholder="Your Email ">
+                        
+                    </div>
+                    <span class="text-danger" *ngIf="email.errors">Email is required.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'"name="password" formControlName="password" placeholder="Your Password">
+                       
+                    </div>
+                    <span class="text-danger" *ngIf="password.errors">Password is required.</span><br><br>
+                   
+
+                    <button type="submit" value="submit" [disabled]="!form.valid" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        Login
+                    </button>
+                </form>
+                <div id="ponka" *ngIf="errors" class="alert alert-danger">{{errors}}</div>
+            </div>
+
+           
+        </div>
+    </div>
+</section>	
+

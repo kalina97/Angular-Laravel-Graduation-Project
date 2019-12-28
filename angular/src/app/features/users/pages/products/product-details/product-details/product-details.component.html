@@ -1,0 +1,129 @@
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Product Details
+    </h2>
+</section>
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <a title="Go Back" routerLink="/products/all-products"><img id="vratim" src="assets/images/back.png"/></a>
+		<div class="container">
+			<div id="onep" class="row">
+				<div  class="col-md-6 col-lg-7 p-b-30">
+					<div class="p-l-25 p-r-30 p-lr-0-lg">
+						<div class="wrap-slick3 flex-sb flex-w">
+							<div class="wrap-slick3-dots"></div>
+							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+							<div class="slick3 gallery-lb">
+								<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+									<div id="ivica" class="wrap-pic-w pos-relative">
+										<img id="brine" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + details.image_src)" alt="IMG-PRODUCT">
+
+										
+									</div>
+								</div>
+
+								
+
+								
+							</div>
+						</div>
+					</div>
+				</div>
+					
+				<div  class="col-md-6 col-lg-5 p-b-30">
+					<div class="p-r-50 p-t-5 p-lr-0-lg">
+						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+							{{details.name}}
+                        </h4>
+                        
+                        
+
+						<span id="podes" class="stext-102 cl3 p-t-23">
+							Price: <b>${{details.price}}</b>
+                        </span><br><br>
+
+
+                        <span id="podes" class="stext-102 cl3 p-t-23">
+                                <i class="fa fa-calendar"></i> {{details.date_arrived}}
+                        </span>
+                        
+
+						<p id="podes" class="stext-102 cl3 p-t-23">
+							Description: {{details.description}}
+                        </p>
+
+                        <p id="podes" class="stext-102 cl3 p-t-23">
+                                Availability: In Stock
+                        </p><br>
+
+                        
+                        <span id="podes" class="stext-102 cl3 p-t-23">
+                                Brand:  <img class="brand" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + details.brand_image)" alt="IMG-PRODUCT">
+                             </span>
+						
+						<!--  -->
+						<ng-container *ngIf="loggedIn">
+							<form #addToCart="ngForm" (ngSubmit)="onSubmit()">
+							<div class="p-t-33">
+							
+
+                                <span id="podes" class="stext-102 cl3 p-t-23">
+                                Quantity
+                               
+                                <input class="form-control" type="number"  [(ngModel)]="form.quantity" required maxlength="12"  name="num-product" >
+							
+								
+							</span>
+							<span class="text-warning" id="badza" *ngIf="form.quantity < 1 ">{{errorQuantity}}</span><br><br>
+							<div class="flex-w flex-r-m p-b-10">
+                                   
+								<div class="size-204 flex-w flex-m respon6-next">
+                                       
+									<button type="submit" value="submit" [disabled]="form.quantity < 1" id="namen" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										Add to cart
+									</button>
+								</div>
+								
+                            </div>	
+                            
+
+						</div>
+
+						<!--  -->
+						<div id="namen1" class="flex-w flex-m p-l-100 p-t-40 respon7">
+							
+								<div class="block2-txt-child2 flex-r p-t-3">
+										<a (click)="onLike(details.product_id)" id="lajkan" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" title="Like">
+											<img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png" alt="ICON">
+											<img  class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png" alt="ICON">
+										</a> {{details.likes}}
+									</div>&nbsp;&nbsp;
+
+							<a href="http://www.facebook.com" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+								<i class="fa fa-facebook"></i>
+							</a>
+
+							<a href="http://www.twitter.com" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+								<i class="fa fa-twitter"></i>
+							</a>
+
+							<a href="http://www.instagram.com" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Instagram">
+								<i class="fa fa-instagram"></i>
+                            </a>
+                            
+                            <a href="http://www.youtube.com" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Youtube">
+								<i class="fa fa-youtube"></i>
+							</a>
+						</div>
+
+					          </form>
+					</ng-container>
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+
+	</section>

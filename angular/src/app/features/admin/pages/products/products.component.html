@@ -1,0 +1,272 @@
+
+
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Admin Panel / Products
+    </h2>
+</section>
+
+<div id="nija1" class="flex-w flex-c-m m-tb-10">
+  <br><br><br>&nbsp;&nbsp;&nbsp;
+  <jw-pagination
+        class="paginacija"
+        [items]="products"
+        (changePage)="onChangePage($event)"
+        [pageSize]="show"></jw-pagination>
+    <label class="pr23" for="sort">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Show: &nbsp;</label>
+    <div id="fri1" class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+        
+        <select id="fri" class="form-control"  (change)="onChange($event.target.value)" [(ngModel)]="show">
+          <option [value]="5">Show 5</option>
+          <option [value]="10">Show 10</option>
+          <option [value]="15">Show 15</option>
+        
+
+        </select><br><br><br>
+    </div><br><br><br>
+
+    
+
+
+
+</div>
+
+
+  
+<div class="table-responsive">
+    <table id="tabelac">
+      <thead>
+        <tr>
+            <th colspan="8">All Products</th>
+        </tr>  
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Category</th>
+            <th scope="col">Number Of Likes</th>
+            <th scope="col">Date Arrived</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="products">
+        <tr *ngFor="let item of pageOfItems">
+           <td id="sopicka">
+            <div id="koljas159">
+                <img class="brand7897" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + item.image_src)" alt=""/>
+                
+               
+               
+            </div>
+            <h5 class="pai4439">{{ item.name }}</h5>
+           </td>
+
+            <td>
+            <h5>${{ item.price }}</h5>
+          </td>
+          <td>
+            
+            <img class="brand7800" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + item.brand_image)" alt=""/>
+          </td>
+          <td>
+            <h5>{{ item.category_name }}</h5>
+          </td>
+          <td>
+                               
+            <h5> 
+                 {{item.likes}}
+            </h5>
+          </td>
+          <td>
+            <h5>{{ item.date_arrived }}</h5>
+          </td>
+          
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-success waves-effect btn-xs"
+              (click)="getOne(item.product_id)"
+            >
+              Edit
+            </button>
+          </td>
+
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-danger waves-effect btn-xs"
+              (click)="deleteProduct(item.product_id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        
+        </ng-container>
+      </tbody>
+
+    
+    </table><br><br><br><br>
+
+    
+   
+  </div>
+
+  <ng-container *ngIf="oneProduct">
+  <section id="geljo" class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                
+                <form [formGroup]="updateForm">
+                    
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                       Edit Product
+                    </h4>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" [value]="oneProduct.name" onblur="this.placeholder = 'Name'" name="first_name" placeholder="Name"  formControlName="name">
+                        
+                 </div>
+                    <span  class="text-danger" *ngIf="updateName.errors?.required">Product Name is required.</span><br><br>
+                    
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" [value]="oneProduct.description" onblur="this.placeholder = 'Description'" name="last_name" placeholder="Description"  formControlName="description">
+                        
+                    </div>
+                    <span  class="text-danger" *ngIf="updateDesc.errors?.required">Product Description is required.</span><br><br>
+
+                   
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number" onfocus="this.placeholder = ''" [value]="oneProduct.price" onblur="this.placeholder = 'Price'" name="email" placeholder="Price"  formControlName="price">
+                        
+                    </div>
+                    <span  class="text-danger" *ngIf="updatePrice.errors?.required">Product Price is required.</span><br><br>
+        
+
+                    <br />
+                     Brand: <select class="form-control" name="number" id="number1" [value]="oneProduct.brand_id" formControlName="brand_id" required>
+                        <ng-container *ngFor="let b of brands">
+                            <option value="{{b.id}}"> {{b.brand_name}}</option>
+                        </ng-container>  
+                        
+                       
+                         </select><br>
+                         <span  class="text-danger" *ngIf="updateBrand.errors?.required">Product Brand is required.</span><br><br>
+
+                         <br />
+
+                     Category: <select class="form-control" name="number" id="number2" [value]="oneProduct.category_id" formControlName="category_id" required>
+                        <ng-container *ngFor="let c of categories">
+                            <option value="{{c.id}}"> {{c.category_name}}</option>
+                        </ng-container>  
+                        
+                       
+                         </select><br>
+                         <span  class="text-danger" *ngIf="updateCategory.errors?.required">Product Category is required.</span><br><br>
+                         <br>
+
+                         <div class="bor8 m-b-20 how-pos4-parent">
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Product Image &nbsp;&nbsp;&nbsp;<br><br>
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="file" (change)="fileChange($event)"  name="product_image" >
+                            
+                        </div><br>
+                        
+                       
+                   
+
+                    <button (click)="update(oneProduct.product_id)" type="button"  class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        Edit
+                    </button>&nbsp;
+                    
+                </form>
+            
+                <div id="ponka" *ngIf="errors" class="alert alert-danger">{{errors}}</div>
+            </div>
+
+           
+        </div>
+    </div>
+</section>	
+</ng-container>
+  
+
+
+  <section id="geljo" class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form [formGroup]="form">
+                    
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                       Insert Product
+                    </h4>
+
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''"  onblur="this.placeholder = 'Name'" name="first_name" placeholder="Name"  formControlName="name">
+                        
+                    </div>
+                    <span  class="text-danger" *ngIf="addName.errors?.required">Product Name is required.</span><br><br>
+                    
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" name="last_name" placeholder="Description"  formControlName="description">
+                        
+                    </div>
+                    <span  class="text-danger" *ngIf="addDesc.errors?.required">Product Description is required.</span><br><br>
+
+                   
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number" onfocus="this.placeholder = ''"  onblur="this.placeholder = 'Price'" name="email" placeholder="Price"  formControlName="price">
+                        
+                    </div>
+                    <span  class="text-danger" *ngIf="addPrice.errors?.required">Product Price is required.</span><br><br>
+        
+
+                    <br />
+                     Brand: <select class="form-control" name="number" id="fri1"  formControlName="brand_id" required>
+                        <ng-container *ngFor="let b of brands">
+                            <option value="{{b.id}}"> {{b.brand_name}}</option>
+                        </ng-container>  
+                        
+                       
+                         </select><br>
+                         <span  class="text-danger" *ngIf="addBrand.errors?.required">Product Brand is required.</span><br><br>
+                         <br />
+
+                     Category: <select class="form-control" name="number" id="fri"  formControlName="category_id" required>
+                        <ng-container *ngFor="let c of categories">
+                            <option value="{{c.id}}"> {{c.category_name}}</option>
+                        </ng-container>  
+                        
+                       
+                         </select><br>
+                         <span  class="text-danger" *ngIf="addCategory.errors?.required">Product Category is required.</span><br><br>
+                         <br>
+
+                         <div class="bor8 m-b-20 how-pos4-parent">
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Product Image &nbsp;&nbsp;&nbsp;<br><br>
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="file" (change)="onFileSelect($event)"  name="product_image" >
+                            
+                        </div><br>
+                       
+                       
+                   
+
+                    <button (click)="insert()" type="button"  class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        Insert
+                    </button>&nbsp;
+                </form>
+                <div id="ponka" *ngIf="errors" class="alert alert-danger">{{errors}}</div>
+            </div>
+
+           
+        </div>
+    </div>
+</section>	
+

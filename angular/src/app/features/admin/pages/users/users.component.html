@@ -1,0 +1,199 @@
+
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Admin Panel / Users
+    </h2>
+</section>
+
+  
+<div class="table-responsive">
+    <table id="tabelac">
+      <thead>
+        <tr>
+            <th colspan="7">All Users</th>
+        </tr>  
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Role Name</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+           
+            <td>
+            <h5>{{ user.first_name }}</h5>
+          </td>
+          <td>
+            <h5>{{ user.last_name }}</h5>
+          </td>
+          <td>
+            <h5>{{ user.email }}</h5>
+          </td>
+          <td>
+            <h5>{{ user.address }}</h5>
+          </td>
+          <td>
+            <h5>{{ user.role_name }}</h5>
+          </td>
+          
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-success waves-effect btn-xs"
+              (click)="getOneUser(user.id)"
+            >
+              Edit
+            </button>
+          </td>
+
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-danger waves-effect btn-xs"
+              (click)="deleteUser(user.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        
+        
+      </tbody>
+
+    
+    </table><br><br><br><br>
+
+    
+   
+  </div>
+
+  <ng-container *ngIf="oneUser">
+  <section id="geljo" class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                
+                <form [formGroup]="editUserForm">
+                    
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                       Edit User
+                    </h4>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" [value]="oneUser.first_name" onblur="this.placeholder = 'First Name'" name="first_name" placeholder="First Name"  formControlName="first_name">
+                        
+                    </div>
+                    <span  class="text-danger" *ngIf="updateName.errors?.required">First name is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" [value]="oneUser.last_name" onblur="this.placeholder = 'Last Name'" name="last_name" placeholder="Last Name"  formControlName="last_name">
+                        
+                    </div>
+
+                    <span class="text-danger" *ngIf="updateSurname.errors?.required">Last name is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" [value]="oneUser.email" onblur="this.placeholder = 'Your Email'" name="email" placeholder="Your Email "  formControlName="email">
+                        
+                    </div>
+                    <span class="text-danger" *ngIf="updateEmail.errors?.required">Email is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" [value]="oneUser.password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Password'" name="password" placeholder="Your Password"  formControlName="password">
+                       
+                    </div>
+
+                    <span class="text-danger" *ngIf="updatePass.errors?.required">Password is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" [value]="oneUser.address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Address'" name="address" placeholder="Your Address "  formControlName="address">
+                        
+                    </div>
+                    <span class="text-danger" *ngIf="updateAddress.errors?.required">Address is in invalid format.</span><br><br>
+
+                    <br />
+                     Role: <select class="form-control" name="number" id="number" [value]="oneUser.role_id" formControlName="role_id" required>
+                          <option value="1"> Administrator</option>
+                         <option value="2"> User</option>
+                         </select><br>
+                        <span class="text-danger" *ngIf="updateRole.errors?.required">Role is required.</span><br><br><br>
+                   
+
+                    <button (click)="update(oneUser.id)" type="button"  class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        Edit
+                    </button>&nbsp;
+                    
+                </form>
+            
+                <div id="ponka" *ngIf="errors" class="alert alert-danger">{{errors}}</div>
+            </div>
+
+           
+        </div>
+    </div>
+</section>	
+</ng-container>
+  
+
+
+  <section id="geljo" class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form [formGroup]="insertUserForm">
+                    
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                       Insert User
+                    </h4>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" name="first_name" placeholder="First Name"  formControlName="first_name">
+                        
+                    </div>
+                    <span  class="text-danger" *ngIf="addName.errors?.required">First name is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" name="last_name" placeholder="Last Name"  formControlName="last_name">
+                        
+                    </div>
+
+                    <span class="text-danger" *ngIf="addSurname.errors?.required">Last name is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email'" name="email" placeholder="Your Email "  formControlName="email">
+                        
+                    </div>
+                    <span class="text-danger" *ngIf="addEmail.errors?.required">Email is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Password'" name="password" placeholder="Your Password"  formControlName="password">
+                       
+                    </div>
+
+                    <span class="text-danger" *ngIf="addPass.errors?.required">Password is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Address'" name="address" placeholder="Your Address "  formControlName="address">
+                        
+                    </div>
+                    <span class="text-danger" *ngIf="addAddress.errors?.required">Address is in invalid format.</span><br><br>
+
+                    <br />
+                     Role: <select class="form-control" name="number" id="number" formControlName="role_id" required>
+                          <option value="1"> Administrator</option>
+                         <option value="2"> User</option>
+                         </select><br>
+                        <span class="text-danger" *ngIf="addRole.errors?.required">Role is required.</span><br><br><br>
+                   
+
+                    <button (click)="insert()" type="button"  class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        Insert
+                    </button>&nbsp;
+                </form>
+                <div id="ponka" *ngIf="errors" class="alert alert-danger">{{errors}}</div>
+            </div>
+
+           
+        </div>
+    </div>
+</section>	
+

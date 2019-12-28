@@ -1,0 +1,60 @@
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Register
+    </h2>
+</section>
+
+<section id="geljo" class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                       Don't have an Account?<br>
+                       Please Sign Up Now
+                    </h4>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" name="first_name" placeholder="First Name"  formControlName="first_name">
+                        
+                    </div>
+                    <span  class="text-danger" *ngIf="first_name.invalid">First name is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" name="last_name" placeholder="Last Name"  formControlName="last_name">
+                        
+                    </div>
+
+                    <span class="text-danger" *ngIf="last_name.invalid">Last name is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email'" name="email" placeholder="Your Email "  formControlName="email">
+                        
+                    </div>
+                    <span class="text-danger" *ngIf="email.invalid">Email is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Password'" name="password" placeholder="Your Password"  formControlName="password">
+                       
+                    </div>
+
+                    <span class="text-danger" *ngIf="password.invalid">Password is in invalid format.</span><br><br>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Address'" name="address" placeholder="Your Address "  formControlName="address">
+                        
+                    </div>
+                    <span class="text-danger" *ngIf="address.invalid">Address is in invalid format.</span><br><br>
+
+                   
+
+                    <button [disabled]="!form.valid" type="submit" value="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        Register
+                    </button>&nbsp;
+                </form>
+                <div id="ponka" *ngIf="errors" class="alert alert-danger">{{errors}}</div>
+            </div>
+
+           
+        </div>
+    </div>
+</section>	
+
+

@@ -1,0 +1,108 @@
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Profile
+    </h2>
+</section>
+
+<div class="table-responsive" *ngIf="items">
+    <table id="tabelac1">
+      <thead>
+          <tr>
+             <th colspan="5">
+            <h2>Your Info</h2>
+             </th> 
+          </tr>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Role Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+         
+          <td>
+            <h3>{{ items.first_name }}</h3>
+          </td>
+          <td>
+            <h3>{{ items.last_name }}</h3>
+          </td>
+          <td>
+            <h3> {{ items.email }}</h3>
+          </td>
+          <td>
+            <h3>{{items.address}}</h3>
+          </td>
+          <td>
+            <h3>{{items.role_name}}</h3>
+          </td>
+        </tr>  
+      </tbody>
+
+    
+    </table>
+
+  </div>
+
+
+  <br /><br /><br />
+
+
+  <div class="table-responsive" *ngIf="checkouts">
+        <table id="tabelac1">
+                <thead>
+                 <tr>
+                    <th colspan="6">
+                    <h2>All Your Checkouts</h2>
+                   </th> 
+                </tr>
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of checkouts">
+                    <td id="sopicka">
+                      
+                        <div id="koljas159">
+                          <img class="brand7897" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + item.picture)" alt=""/>
+                         
+                      </div>
+                      <h5 class="pai4439">{{ item.product_name }}</h5>  
+                      
+                    </td>
+                    <td>
+                      <h5>${{ item.price }}</h5>
+                    </td>
+                    <td>
+                      <h5>{{ item.quantity }}</h5>
+                    </td>
+                    <td>
+                      <h5> {{ item.price * item.quantity | currency }}</h5>
+                    </td>
+                    <td>
+                     <h5>{{item.created_at}}</h5>
+                    </td>
+                    <td>
+                        <h5 *ngIf="item.is_delivered == 1">Delivered</h5>
+                        <h5 *ngIf="item.is_delivered == 0">Not delivered</h5>
+                    </td>
+                  </tr>
+          
+                  
+                  
+                  
+                </tbody>
+          
+              
+              </table><br><br><br><br><br>
+    
+      </div>

@@ -1,0 +1,71 @@
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Edit Cart
+    </h2>
+</section>
+
+
+<div class="table-responsive">
+        <form #editForm="ngForm" (ngSubmit)="onSubmit()">    
+    <table id="tabelac">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="sopicka">
+                
+                  <div id="koljas159">
+                    <img class="brand7897" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + product.picture)" alt=""/>
+                     
+                </div>
+                <h5 class="pai4439">{{ product.name }}</h5>
+                
+              </td>
+              <td>
+                <h5>${{ product.price }}</h5>
+              </td>
+              <td id="sopic100"> 
+                <input class="form-control" type="number" value="{{product.quantity}}" name="quantity" [(ngModel)]="form.quantity"/>
+                <span class="text-warning" id="badza" *ngIf="form.quantity < 1 ">{{errorQuantity}}</span><br><br>
+              </td>
+              
+              <td id="sopic100">
+                <button
+                  type="submit"
+                  class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
+                  [disabled]="form.quantity < 1">
+                  Update
+                </button>
+              </td>
+            </tr>
+    
+            <tr>
+    
+                <td id="sopic">
+                
+    
+                 <button id="polq" routerLink="/buy/cart/{{user_id}}" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                    Back To Cart
+                  </button><br>
+                    
+                     </td>
+    
+                
+    
+            </tr>
+            
+            
+          </tbody>
+    
+        
+        </table>
+    
+        </form>
+       
+      </div>

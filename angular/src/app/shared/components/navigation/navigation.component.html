@@ -1,0 +1,287 @@
+
+
+<!-- <a class="nav-link" href="#" (click)="logout($event)" -->
+<!-- >Logout</a -->
+
+<!-- Header -->
+<header>
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+				<div class="top-bar">
+						<div class="content-topbar flex-sb-m h-full container">
+							<div class="left-top-bar">
+								Free shipping for standard order over $100
+							</div>
+		
+							
+						</div>
+					</div>
+		
+	
+			<div class="wrap-menu-desktop">
+					<ng-container *ngIf="!loggedIn">
+				<nav class="limiter-menu-desktop container">
+					
+					<!-- Logo desktop -->		
+					<a routerLink="/" class="moja1">
+						Quick Shop
+					</a>
+	
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						
+						<ul class="main-menu">
+							<li>
+								
+								<a routerLink="/"><i class="fa fa-home"></i> Home</a>
+							</li>
+							<!--
+							<li>
+								<a routerLink="products/all-products">Shop</a>
+								<ul class="sub-menu">
+									<li><a href="#">Men Products</a></li>
+									<li><a href="#">Women Products</a></li>
+									<li><a href="#">Kids Products</a></li>
+									<li><a href="#">Sports Products</a></li>
+	
+								</ul>
+							</li>-->
+	
+	
+
+							<li>
+								<a href="#">Shop</a>
+								<ul class="sub-menu">
+									<li><a routerLink="products/all-products">All Products</a></li>
+									<li><a routerLink="products/men-products">Men </a></li>
+									<li><a routerLink="products/women-products">Women </a></li>
+									<li><a routerLink="products/kids-products">Kids </a></li>
+									<li><a routerLink="products/sports-products">Sports </a></li>
+	
+								</ul>
+							</li>
+	
+
+							<li>
+								<a href="#">Brand</a>
+								<ul class="sub-menu">
+									<li><a routerLink="products/nike">Nike<img class="brand2" src="assets/images/nike.png"/></a></li>
+									<li><a routerLink="products/adidas">Adidas<img class="brand2" src="assets/images/adidas.png"/></a></li>
+									<li><a routerLink="products/reebok">Reebok<img class="brand2" src="assets/images/reebok.png"/></a></li>
+									<li><a routerLink="products/asics">Asics<img class="brand2" src="assets/images/asics.png"/></a></li>
+									<li><a routerLink="products/puma">Puma<img class="brand2" src="assets/images/puma.png"/></a></li>
+									<li><a routerLink="products/new-balance">New Balance<img class="brand2" src="assets/images/nb.png"/></a></li>
+									<li><a routerLink="products/hummel">Hummel<img class="brand2" src="assets/images/hummel.png"/></a></li>
+	
+								</ul>
+							</li>
+
+	
+							<li>
+								<a routerLink="/author">Author</a>
+							</li>
+	
+							<li>
+								<a routerLink="/contact" >Contact</a>
+							</li>
+
+							
+					
+
+
+	
+						</ul>
+					</div>	
+	
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+						
+	
+						
+	
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 " >
+							<a class="moja" routerLink="auth/login"><i class="fa fa-sign-in"></i> Login </a> / <a class="moja" routerLink="auth/register"><i class="fa fa-user-register"></i>Signup</a>
+						</div>
+	
+						
+					</div>
+				</nav>
+				</ng-container>
+
+
+				
+				<ng-container *ngIf="loggedIn && role === 2">
+					<nav class="limiter-menu-desktop container">		
+							
+							<!-- Logo desktop -->		
+							<a routerLink="/" class="moja1">
+								Quick Shop
+							</a>
+			
+							<!-- Menu desktop -->
+							<div class="menu-desktop">
+								
+								<ul class="main-menu">
+									<li>
+										<a routerLink="/"><i class="fa fa-home"></i> Home</a>
+									</li>
+									<!--
+									<li>
+										<a routerLink="products/all-products">Shop</a>
+										<ul class="sub-menu">
+											<li><a href="#">Men Products</a></li>
+											<li><a href="#">Women Products</a></li>
+											<li><a href="#">Kids Products</a></li>
+											<li><a href="#">Sports Products</a></li>
+			
+										</ul>
+									</li>-->
+			
+			
+		
+									<li>
+										<a href="#">Shop</a>
+										<ul class="sub-menu">
+											<li><a routerLink="products/all-products">All Products</a></li>
+											<li><a routerLink="products/men-products">Men </a></li>
+											<li><a routerLink="products/women-products">Women </a></li>
+											<li><a routerLink="products/kids-products">Kids </a></li>
+											<li><a routerLink="products/sports-products">Sports </a></li>
+			
+										</ul>
+									</li>
+			
+		
+									<li>
+										<a href="#">Brand</a>
+										<ul class="sub-menu">
+											<li><a routerLink="products/nike">Nike<img class="brand2" src="assets/images/nike.png"/></a></li>
+											<li><a routerLink="products/adidas">Adidas<img class="brand2" src="assets/images/adidas.png"/></a></li>
+											<li><a routerLink="products/reebok">Reebok<img class="brand2" src="assets/images/reebok.png"/></a></li>
+											<li><a routerLink="products/asics">Asics<img class="brand2" src="assets/images/asics.png"/></a></li>
+											<li><a routerLink="products/puma">Puma<img class="brand2" src="assets/images/puma.png"/></a></li>
+											<li><a routerLink="products/new-balance">New Balance<img class="brand2" src="assets/images/nb.png"/></a></li>
+											<li><a routerLink="products/hummel">Hummel<img class="brand2" src="assets/images/hummel.png"/></a></li>
+			
+										</ul>
+									</li>
+		
+			
+									<li>
+										<a routerLink="/author">Author</a>
+									</li>
+			
+									<li>
+										<a routerLink="/contact" >Contact</a>
+									</li>
+		
+									<li>
+										
+											<a href="#" (click)="logout($event)" ><i class="fa fa-sign-out"></i> Logout</a>
+									</li>
+									
+							
+		
+		
+			
+								</ul>
+
+							
+
+
+							</div>	
+			
+							<!-- Icon header -->
+							<div class="wrap-icon-header flex-w flex-r-m">
+								
+			
+								<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" >
+									<a class="moja" routerLink="buy/cart/{{user_id}}"><i class="zmdi zmdi-shopping-cart"></i> Cart</a>
+								
+										/ <a class="moja" routerLink="/profile"><i class="fa fa-user"></i> Profile</a>
+									</div>
+			
+								
+							</div>
+
+							</nav>
+						
+						</ng-container>
+
+
+						<ng-container *ngIf="loggedIn && role === 1 ">
+				
+							<nav class="limiter-menu-desktop container">
+								
+								<!-- Logo desktop -->		
+								<a routerLink="/admin/users" class="moja1">
+									Admin Panel
+								</a>
+				
+								<!-- Menu desktop -->
+								<div class="menu-desktop">
+									
+									<ul class="main-menu">
+										<li>
+											<a routerLink="/admin/users">Users</a>
+										</li>
+										
+				
+										<li>
+											<a routerLink="/admin/brands">Brands</a>
+										</li>
+				
+										<li>
+											<a routerLink="/admin/categories" >Categories</a>
+										</li>
+			
+										<li>
+											<a routerLink="/admin/contacts" >Contacts</a>
+										</li>
+			
+										<li>
+											<a routerLink="/admin/products" >Products</a>
+										</li>
+			
+										<li>
+											<a routerLink="/admin/trackings" >Trackings</a>
+										</li>
+			
+										<li>
+												<a href="#" (click)="logout($event)" ><i class="fa fa-sign-out"></i> Logout</a>
+										</li>
+										
+								
+			
+			
+				
+									</ul>
+								</div>	
+				
+						
+							</nav>
+							</ng-container>
+
+					
+
+
+						
+			</div>
+			
+			
+
+			
+			
+
+			
+
+
+		</div>
+	
+	
+	
+	   
+	</header>
+	
+	

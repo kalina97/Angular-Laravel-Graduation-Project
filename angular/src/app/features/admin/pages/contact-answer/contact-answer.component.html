@@ -1,0 +1,137 @@
+
+
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Admin Panel / Contacts
+    </h2>
+</section>
+
+  
+<div class="table-responsive">
+    <table id="tabelac">
+      <thead>
+        <tr>
+            <th colspan="7">Contact Questions</th>
+        </tr>  
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Message</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Answer It</th>
+            <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of contacts">
+            
+            <td>
+            <h5>{{ item.name }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.email }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.subject }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.message }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.created_at }}</h5>
+          </td>
+          
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-success waves-effect btn-xs"
+              (click)="insert(item.id)"
+            >
+              Answer
+            </button>
+          </td>
+
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-danger waves-effect btn-xs"
+              (click)="deleteContact(item.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        
+        
+      </tbody>
+
+    
+    </table><br><br><br><br>
+
+    
+   
+  </div>
+
+ 
+   
+<div class="table-responsive">
+    <table id="tabelac">
+      <thead>
+        <tr>
+            <th colspan="6">Contact Answers</th>
+        </tr>  
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Message</th>
+            <th scope="col">Answered Date</th>
+            <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let answer of answers">
+            <td>
+            <h5>{{ answer.name }}</h5>
+          </td>
+          <td>
+            <h5>{{ answer.email }}</h5>
+          </td>
+          <td>
+            <h5>{{ answer.subject }}</h5>
+          </td>
+          <td>
+            <h5>{{ answer.message }}</h5>
+          </td>
+          <td>
+            <h5>{{ answer.answered }}</h5>
+          </td>
+          
+
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-danger waves-effect btn-xs"
+              (click)="deleteAnswer(answer.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+
+        
+        
+        
+      </tbody>
+
+    
+    </table><br><br><br><br><br>
+
+    
+   
+  </div>

@@ -1,0 +1,178 @@
+
+<!-- Title page -->
+<section id="opet" class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Admin Panel / Trackings
+    </h2>
+</section>
+
+  
+<div class="table-responsive">
+    <table id="tabelac">
+      <thead>
+        <tr>
+            <th colspan="9">Not Delivered</th>
+        </tr>  
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">User Name</th>
+            <th scope="col">User Surname</th>
+            <th scope="col">Date</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Deliver It</th>
+            <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of trackings">
+            <td id="sopicka">
+                <div id="koljas159">
+                    <img class="brand7897" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + item.picture)" alt=""/>
+                    
+                </div>
+                <h5 class="pai4439">{{ item.name }}</h5>  
+            </td>
+            <td>
+            <h5>${{ item.price }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.quantity }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.first_name }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.last_name }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.created_at }}</h5>
+          </td>
+          <td>
+            <h5>{{ item.quantity * item.price | currency }}</h5>
+          </td>
+          
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-success waves-effect btn-xs"
+              (click)="makeDelivered(item.id)"
+            >
+              Deliver
+            </button>
+          </td>
+
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-danger waves-effect btn-xs"
+              (click)="deleteOne(item.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        
+        
+      </tbody>
+
+    
+    </table><br><br><br><br>
+
+    
+   
+  </div>
+
+ 
+   
+<div class="table-responsive">
+    <table id="tabelac">
+      <thead>
+        <tr>
+            <th colspan="9">Delivered</th>
+        </tr>  
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">User Name</th>
+            <th scope="col">User Surname</th>
+            <th scope="col">Delivering Date</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deliver of delivered">
+            <td id="sopicka">
+                <div id="koljas159">
+                    <img class="brand7897" [src]="dom.bypassSecurityTrustUrl('http://localhost:8000/images/' + deliver.picture)" alt=""/>
+                     
+                </div>
+                <h5 class="pai4439">{{ deliver.name }}</h5>
+            </td>
+            <td>
+            <h5>${{ deliver.price }}</h5>
+          </td>
+          <td>
+            <h5>{{ deliver.quantity }}</h5>
+          </td>
+          <td>
+            <h5>{{ deliver.first_name }}</h5>
+          </td>
+          <td>
+            <h5>{{ deliver.last_name }}</h5>
+          </td>
+          <td>
+            <h5>{{ deliver.created_at }}</h5>
+          </td>
+          <td>
+            <h5>{{ deliver.quantity * deliver.price | currency }}</h5>
+          </td>
+          
+
+          <td>
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-danger waves-effect btn-xs"
+              (click)="deleteOne(deliver.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+
+        <tr id="isporuka">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td id="vlado">
+            <button
+            id="lia"
+              href="#"
+              class="btn btn-danger waves-effect btn-xs"
+              (click)="deleteAll(trackings)"
+            >
+              Delete All
+            </button>
+        </td>
+
+        </tr>
+        
+        
+      </tbody>
+
+    
+    </table><br><br><br><br><br>
+
+    
+   
+  </div>
